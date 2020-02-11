@@ -6,11 +6,11 @@ import com.revature.pojo.GermanShephardMiniature;
 public class DogDriver {
 
 	public static void main(String[] args) {
-		com.revature.pojo.Dog d1 = new Dog();
+		com.revature.pojo.Dog d1 = new Dog("Snoop", "Blue", 2);
 
-		d1.setBreed("Snoop");
-		d1.setColor("Blue");
-		d1.setNumberOfLegs(2);
+		/*
+		 * d1.setBreed("Snoop"); d1.setColor("Blue"); d1.setNumberOfLegs(2);
+		 */
 
 		System.out.println("Dog Breed: " + d1.getBreed());
 		System.out.println("Dog Color: " + d1.getColor());
@@ -19,7 +19,7 @@ public class DogDriver {
 		Dog d2 = new GermanShephardMiniature();
 
 		// d2.setBreed("German Shephard");
-		d2.setColor("Brown");
+		d2.setColor("Blue");
 		d2.setNumberOfLegs(5);
 
 		System.out.println("Dog Breed: " + d2.getBreed());
@@ -30,6 +30,11 @@ public class DogDriver {
 		}
 		
 		GermanShephardMiniature g1 = (GermanShephardMiniature) d2;
+		
+		System.out.println("Test 1: " + new Dog("breed", "color", 1).equals(new Dog("breed", "color", 1)));
+		System.out.println("Test 2: " + new Dog("breed", "color", 1).equals(new Dog("breed", "color", 4)));
+		System.out.println(new Dog("test breed", "test Color", 5));
+		
 
 	}
 
