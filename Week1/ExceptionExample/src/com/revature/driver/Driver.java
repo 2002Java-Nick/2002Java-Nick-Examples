@@ -1,6 +1,6 @@
 package com.revature.driver;
 
-import java.io.IOException;
+import com.revature.exception.MyCustomException;
 
 public class Driver {
 
@@ -24,7 +24,7 @@ public class Driver {
 		// Object n = null;
 
 		// n.getClass();
-		
+
 		try {
 			mightThrow();
 			System.out.println("Exception did not occure in might throw");
@@ -33,30 +33,36 @@ public class Driver {
 		} finally {
 			System.out.println("This will always run");
 		}
-		
+
 		try {
-			
+
 		} catch (RuntimeException e) {
-			
+
 		} catch (Exception e) {
-		
+
 		} catch (Error e) {
-			
+
 		} catch (Throwable t) {
-			
-		} catch (IOException e) {
+
+		} // catch (IOException e) {
 			// must be placed before general Exception
+			// }
+
+		try {
+			throwCustomException();
+		} catch (MyCustomException e) {
+			System.out.println(e.getMessage());
 		}
-		
-		try {} catch (Exception e) {}
-		
-		try {} finally {}
-		
-		//willNeverThrow(); must be hanlded even though cannot throw an exception, declares that it will
+
+		try {
+		} finally {
+		} // try needs at least one catch or finally
+
+		// willNeverThrow(); must be handled even though cannot throw an exception,
+		// declares that it will
 
 		System.out.println("Everything is fine");
 
-		
 	}
 
 	public static void willThrow() throws Exception {
@@ -72,8 +78,9 @@ public class Driver {
 	public static void willNeverThrow() throws Exception {
 		System.out.println("Everything is ok");
 	}
-	
-	
-	
-	
+
+	public static void throwCustomException() throws MyCustomException {
+		throw new MyCustomException("This is what happend");
+	}
+
 }
