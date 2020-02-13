@@ -8,6 +8,7 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+import com.revature.exception.SumTooLargeException;
 import com.revature.util.CalcImpl;
 import com.revature.util.Calculator;
 
@@ -39,6 +40,12 @@ public class CalculatorTest {
 		assertEquals("3 + 5 should equal 8", new Integer(8), intCalc.add(3,  5));
 	}
 
+	@Test(expected = SumTooLargeException.class)
+	public void addTooLargeIntegersTes() {
+		intCalc.add(Integer.MAX_VALUE, 1);
+	}
+	
+	
 	
 	
 	
