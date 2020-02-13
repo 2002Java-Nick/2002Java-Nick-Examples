@@ -1,7 +1,16 @@
 package com.revature.pojo;
 
-public class Book {
+import java.io.Serializable;
+
+//Serializable is a marker interface
+//A marker interface is an interface with no abstract methods
+public class Book implements Serializable {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -6333710070222009043L;
+
 	private String isbn; 
 	
 	private String title;
