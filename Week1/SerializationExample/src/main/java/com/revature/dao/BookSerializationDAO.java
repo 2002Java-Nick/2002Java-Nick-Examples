@@ -42,30 +42,17 @@ public class BookSerializationDAO implements BookDAO {
 		
 		String filename;
 		filename = isbn + ".dat";
-		FileInputStream fis = null;
-		ObjectInputStream ois = null;
 		Book b = null;
-		try {
-			fis = new FileInputStream(filename);
-			ois = new ObjectInputStream(fis);
+		try (FileInputStream fis = new FileInputStream(filename); ObjectInputStream ois = new ObjectInputStream(fis);) { //try with resources 
 			b = (Book) ois.readObject();
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
 			e.printStackTrace();
-		} finally {
-			try {
-				oos.close();
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-			try {
-				fos.close();
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
 		}
-		return null;
+		return b;
 	}
 
 }

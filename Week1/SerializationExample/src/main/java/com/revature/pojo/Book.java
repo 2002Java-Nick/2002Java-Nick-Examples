@@ -19,7 +19,7 @@ public class Book implements Serializable {
 	
 	private String genre;
 	
-	private double price;
+	private transient double price;
 	
 	private int pageCount;
 
