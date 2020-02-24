@@ -22,27 +22,27 @@ import java.util.List;
  */
 
 import com.example.model.Pet;
+import com.revature.util.ConnectionFactory;
 
 public class PetDaoImpl implements PetDao {
 
 	// There should be system variables once connected to AWS:RDS
 	// Note: STS will not have access to new environment variables until
 	// you restart it
-	private static String url = "jdbc:postgresql://localhost:5432/postgres";
 	// jdbc:postgresql://host:port/database_name
-	private static String username = "postgres";
-	private static String password = "postgres";
+	
 
 	@Override
 	public void insertPet(Pet p) {
-		try (Connection conn = DriverManager.getConnection(url, username, password)) {
+		
+		try (Connection conn = ConnectionFactory.getConnection()) {
 
 			// putting in a native sql query utilizing a prepared statement
-			PreparedStatement ps = conn.prepareStatement("INSERT INTO Pets VALUES(?,?)");
+			PreparedStatement ps = conn.prepareStatement("INSERT INTO proc_table VALUES(?,?)");
 			ps.setString(1, p.getName());
 			// we are setting the first question mark to be the name that belongs
 			// to our pet object
-			ps.setString(2, p.getType());
+			ps.setDouble(2, 0.0);
 			// we are setting the second question mark to be the type that belongs
 			// to our pet object
 			ps.execute();
@@ -56,7 +56,7 @@ public class PetDaoImpl implements PetDao {
 	@Override
 	public Pet selectPetByName(String name) {
 		Pet pet = null;
-		try (Connection conn = DriverManager.getConnection(url, username, password)) {
+		try (Connection conn = ConnectionFactory.getConnection()) {
 
 			PreparedStatement ps = conn.prepareStatement("SELECT * FROM Pets WHERE name=?");
 			ps.setString(1, name);
@@ -80,7 +80,7 @@ public class PetDaoImpl implements PetDao {
 	@Override
 	public List<Pet> selectAllPets() {
 		List<Pet> pets = new ArrayList<Pet>();
-		try (Connection conn = DriverManager.getConnection(url, username, password)) {
+		try (Connection conn = ConnectionFactory.getConnection()) {
 			PreparedStatement ps = conn.prepareStatement("SELECT * FROM Pets");
 			ResultSet rs = ps.executeQuery();
 			while(rs.next()) {
@@ -95,7 +95,7 @@ public class PetDaoImpl implements PetDao {
 
 	@Override
 	public void updatePet(Pet p) {
-		try (Connection conn = DriverManager.getConnection(url, username, password)) {
+		try (Connection conn = ConnectionFactory.getConnection()) {
 
 		PreparedStatement ps = conn.prepareStatement("UPDATE Pets SET type=? WHERE name=?");
 		ps.setString(1, p.getType());
@@ -110,7 +110,7 @@ public class PetDaoImpl implements PetDao {
 
 	@Override
 	public void deletePet(Pet p) {
-		try (Connection conn = DriverManager.getConnection(url, username, password)) {
+		try (Connection conn = ConnectionFactory.getConnection()) {
 
 			PreparedStatement ps = conn.prepareStatement("DELETE FROM Pets WHERE name=?");
 			ps.setString(1, p.getName());
