@@ -83,11 +83,21 @@ declare
 	price numeric(10, 2);
 begin
 	cost := 3.50;
-	call expensive_tracks(cost, curs)
-end
+	call expensive_tracks(cost, curs);
+	loop
+		fetch curs into title, price;
+		exit when not found;
+	
+		insert into proc_table (title, price) values(title, price);
+	end loop;
+end; $$ language plpgsql;
 create table proc_table (
 	title varchar(200),
 	price numeric(10, 2)
 );
+
+truncate table proc_table;
+
+select * from proc_table;
 select * from track;
 select * from customer;
