@@ -29,6 +29,12 @@ public class PreparedDriver {
 			} else {
 				System.out.println("Incorrect username/password combination!!!!!!");
 			}
+		} else if ("change".equalsIgnoreCase(answer)) {
+			System.out.println("Enter your username: ");
+			String username = sc.nextLine();
+			System.out.println("Enter your password: ");
+			String password = sc.nextLine();
+			uService.updatePassword(username, password);
 		}
 		
 	}

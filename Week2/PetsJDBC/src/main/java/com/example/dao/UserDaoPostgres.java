@@ -1,6 +1,7 @@
 package com.example.dao;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -19,8 +20,11 @@ public class UserDaoPostgres implements UserDao {
 
 	@Override
 	public void updateUser(User u) {
-		try(Connection conn = ConnectionFactory.getConnection()) {
-			String sql = "update user_table set password = '" + u.getPassword() + "' where username = '" + u.getUsername() + "'";
+		try (Connection conn = ConnectionFactory.getConnection()) {
+			String sql = "update user_table set password = '" + u.getPassword() + "' where username = '"
+					+ u.getUsername() + "'";
+			Statement stmt = conn.createStatement();
+			stmt.executeUpdate(sql);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -43,11 +47,11 @@ public class UserDaoPostgres implements UserDao {
 	public User getUserByUsername(String username) {
 
 		User ret = null;
-		
+
 		String sql = "Select * from user_table where username ='" + username + "'";
-		
-		try (Connection conn = ConnectionFactory.getConnection()){
-			
+
+		try (Connection conn = ConnectionFactory.getConnection()) {
+
 			Statement stmt = conn.createStatement();
 			ResultSet rs = stmt.executeQuery(sql);
 			if (rs.next()) {
@@ -56,12 +60,12 @@ public class UserDaoPostgres implements UserDao {
 				ret.setUsername(rs.getString(2));
 				ret.setPassword(rs.getString(3));
 			}
-			
+
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+
 		return ret;
 	}
 
@@ -69,6 +73,20 @@ public class UserDaoPostgres implements UserDao {
 	public List<User> getAllUsers() {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public void updateUserPrepared(User u) {
+		try (Connection conn = ConnectionFactory.getConnection()) {
+			String sql = "update user_table set password = ? where username = ?";
+			PreparedStatement stmt = conn.prepareStatement(sql);
+			stmt.setString(1, u.getPassword());
+			stmt.setString(2, u.getUsername());
+			stmt.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 }

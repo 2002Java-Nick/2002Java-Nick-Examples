@@ -1,0 +1,12 @@
+p {
+    font: 12px comic-sans;
+    font-family: "Comic Sans MS";
+}
+
+.important {
+    color: orange;
+}
+
+#mainContent {
+    font-size: large;
+}

@@ -11,7 +11,7 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public void updatePassword(String username, String password) {
 		
-		uDao.createUser(new User(0, username, password));
+		uDao.updateUserPrepared(new User(0, username, password));
 		
 	}
 
