@@ -1,0 +1,45 @@
+# Week 4 Http Topics
+
+- [HTTP](https://tools.ietf.org/html/rfc7231)
+  - Request vs Response
+  - [Verbs:](https://tools.ietf.org/html/rfc7231#section-4)
+    - Get vs Post
+  - URI
+  - Body
+
+- [Servlet](https://docs.oracle.com/javaee/5/tutorial/doc/bnafe.html)
+  - [J2EE Architecture](https://docs.oracle.com/cd/B10570_07/migrate.902/a95110/overview.htm#1005629)
+    - Browser/Server Communication
+  - Servlet Lifecycle
+  - Web Container
+  - [Servlet API](https://docs.oracle.com/javaee/7/api/javax/servlet/package-summary.html)
+    - Servlet Interface, GenericServlet,HttpServlet
+    - Servlet Inheritance Tree/Hierachy
+    - init(), service(), destroy()
+    - doGet(), doPost()
+    - HttpServletRequest, HttpServletResponse
+    - RequestDispatcher
+    - Forward vs Redirect
+    - Print Writer
+    - Form Processing
+    - Request Object
+      - Retrieving Parameters
+  - Deployment Descriptor:
+    - web.xml
+    - @WebServlet
+    - ServletContext vs ServletConfig
+    - Url mapping
+    - Load on startup
+  - Design Pattern:
+    - [Front Controller](https://www.oracle.com/technetwork/java/frontcontroller-135648.html)
+    - [MVC](https://docs.oracle.com/cd/E13174_01/alui/devdoc/docs60/Overview_of_the_Portal_Architecture/Portal_UI/PlumtreeDevDoc_Overview_MVCArchitecture.htm)
+    - [Buisness Delegate](https://www.oracle.com/technetwork/java/businessdelegate-137562.html)
+
+- [XML](https://www.w3.org/XML/)
+  - Valid vs. Well Formed
+  - Schema
+    - XSD
+    - DTD
+  - [JAX-P](https://docs.oracle.com/javase/tutorial/jaxp/index.html)
+    - DOM
+    - SAX
