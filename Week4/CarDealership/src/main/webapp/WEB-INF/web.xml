@@ -10,11 +10,11 @@
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
   <servlet>
-  	<servlet-name>GetCarLotServlet</servlet-name>
-  	<servlet-class>com.revature.servlet.GetCarLotServlet</servlet-class>
+  	<servlet-name>CarServlet</servlet-name>
+  	<servlet-class>com.revature.servlet.CarServlet</servlet-class>
   </servlet>
   <servlet-mapping>
-  	<servlet-name>GetCarLotServlet</servlet-name>
-  	<url-pattern>/getLot</url-pattern>
+  	<servlet-name>CarServlet</servlet-name>
+  	<url-pattern>/car</url-pattern>
   </servlet-mapping>
 </web-app>
