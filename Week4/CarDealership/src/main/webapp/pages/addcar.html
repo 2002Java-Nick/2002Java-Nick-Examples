@@ -12,16 +12,37 @@
 </head>
 
 <body>
-    <div id="carList" class="table-responsive">
-        <table id="carTable" class="table table-boardered table-dark">
-            <tr id="headerRow">
-                <th id="makeHeader">Make</th>
-                <th id="modelHeader">Model</th>
-                <th id="yearHeader">Year</th>
-                <th id="vinHeader">Vin</th>
-            </tr>
-        </table>
-    </div>
+
+    <nav class="navbar navbar-light bg-light">
+        <a class="navbar-brand" href="#">
+          <img src="revature.png" height="30" class="d-inline-block align-top" alt="">
+          RevaCarDealership
+        </a>
+      </nav>
+
+    <form id="addCarForm">
+
+        <div class="form-group"> 
+            <label for="make">Make:</label>
+            <input type="text" id="make" name="make" placeholder="enter make here"/>
+        </div>
+        <div class="form-group"> 
+            <label for="model">Model:</label>
+            <input type="text" id="model" name="model" placeholder="enter model here"/>
+        </div>
+        <div class="form-group"> 
+            <label for="year">Year:</label>
+            <input type="number" id="year" name="year" placeholder="enter year here"/>
+        </div>
+        <div class="form-group"> 
+            <label for="vin">Vin:</label>
+            <input type="text" id="vin" name="vin" placeholder="enter vin here"/>
+        </div>
+        
+        <button type="submit" id="addCar" class="btn btn-primary">Add Car</button>
+
+    </form>
+
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
         integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
         crossorigin="anonymous"></script>
@@ -31,7 +52,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
         integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
         crossorigin="anonymous"></script>
-    <script src='../scripts/carlot.js'></script>
+    <script type="text/javascript" src="../scripts/addcar.js"></script>
 </body>
 
 </html>
