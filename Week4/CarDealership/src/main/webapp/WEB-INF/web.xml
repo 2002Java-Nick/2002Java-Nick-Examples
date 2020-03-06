@@ -10,11 +10,31 @@
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
   <servlet>
-  	<servlet-name>CarServlet</servlet-name>
-  	<servlet-class>com.revature.servlet.CarServlet</servlet-class>
+    <servlet-name>CarServlet</servlet-name>
+    <servlet-class>com.revature.servlet.CarServlet</servlet-class>
   </servlet>
   <servlet-mapping>
-  	<servlet-name>CarServlet</servlet-name>
-  	<url-pattern>/car</url-pattern>
+    <servlet-name>CarServlet</servlet-name>
+    <url-pattern>/car</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>LoginServlet</display-name>
+    <servlet-name>LoginServlet</servlet-name>
+    <servlet-class>com.revature.servlet.LoginServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>LoginServlet</servlet-name>
+    <url-pattern>/login</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>CarLotServlet</display-name>
+    <servlet-name>CarLotServlet</servlet-name>
+    <servlet-class>com.revature.servlet.CarLotServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CarLotServlet</servlet-name>
+    <url-pattern>/carlot</url-pattern>
   </servlet-mapping>
 </web-app>
