@@ -1,0 +1,71 @@
+# Week 6 Spring/Hibernate Topics
+
+- [Hibernate](https://hibernate.org/orm/)
+  - Object/Relational Mapping (ORM)
+  - Object States:
+    - Transient, Persistent, Detached
+  - Hibernate API Interfaces/Classes:
+    - Configuration:
+      - hibernate.cfg.xml
+        - Properties:
+          - Driver, credentials
+          - Dialect
+          - hbm2ddl
+        - Mapping files/classes
+          - hbm.xml
+      - [Java Persistance API annotations:](https://docs.oracle.com/javaee/6/tutorial/doc/bnbpz.html)
+        - @Entity, @Table, @Id, @Column
+        - @OneToOne, @OneToMany, @ManyToMany, @JoinColumn
+      - SessionFactory
+        - [Level 2 cacheing](https://www.ehcache.org/)
+      - Session
+        - Level 1 (default) cacheing
+        - save/persist
+        - get/load
+        - update/merge
+        - Transaction
+        - Query
+          - HQL, Native SQL, named queries
+        - Criteria
+          - Criterion:
+            - Restrictions
+            - OrderBy
+
+- [Spring Framework](https://spring.io/projects/spring-framework)
+  -[IOC](https://www.martinfowler.com/articles/injection.html)
+  -Dependency Injection
+  - Core
+    - Bean lifecycle
+    - Injecting primitives (XML)
+    - Bean Factory vs. App Context
+    - Injecting objects (XML)
+    - Annotations
+      - @Component, @Repository, @Service, @Autowired
+  - [AOP](https://docs.spring.io/spring/docs/2.5.x/reference/aop.html)
+    - Aspect Oriented Programming (AOP)
+    - Cross-cutting concerns
+    - Advice
+      - Types
+    - Pointcut
+    - Join points
+    - Hooks
+    - Aspect-J
+  - MVC
+    - Control flow
+    - @Controller
+    - @RequestMapping
+    - InternalViewResourceResolver
+    - HandlerMapper
+    - SpringFrontController
+  - Integration
+    - RestTemplate
+  - [Data/JPA](https://spring.io/projects/spring-data)
+    - Form input
+    - Validation (JSR 303)
+    - Hibernate Integration using Contextual Sessions
+    - @Transactional
+    - CrudRepository/JPARepository
+  - [Boot](https://spring.io/projects/spring-boot)
+    - Convention over COnfiguration
+    - @Configuration
+    - application.yml/properties
