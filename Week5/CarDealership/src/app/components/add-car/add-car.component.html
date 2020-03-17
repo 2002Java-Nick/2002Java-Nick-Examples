@@ -1,0 +1,15 @@
+<h2>Add Car</h2>
+
+<label for="make">Make: </label>
+<input type="text" name="make" #make />
+<br>
+<label for="model">Model: </label>
+<input type="text" name="model" #model />
+<br>
+<label for="year">Year: </label>
+<input type="number" name="year" #year />
+<br>
+<label for="vin">VIN: </label>
+<input type="text" name="vin" #vin />
+<br>
+<button type="submit" (click)="add(make.value, model.value, year.value, vin.value)">Add Car</button>

@@ -1,5 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Car } from '../models/Car';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Observable, of } from 'rxjs';
+import { catchError, map, tap } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -69,13 +72,27 @@ export class CarService {
 }
 ]`;
 
+private readonly URL = `http://localhost:8080/CarDealership/car`; // URL to web api
+
+httpOptions = {
+  headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+};
+
 carList: Car[];
 
-  public listCars(): Car[] {
-    return this.carList;
+  public listCars(): Observable<Car[]> {
+    return this.http.get<Car[]>(this.URL);
   }
 
-  constructor() {
+  public addCar(car: Car): Observable<Car> {
+    return this.http.post<Car>(this.URL, car);
+  }
+
+  constructor(private http: HttpClient) {
     this.carList = JSON.parse(this.carListJson);
    }
+
+
+
+
 }

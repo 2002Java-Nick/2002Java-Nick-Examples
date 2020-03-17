@@ -26,40 +26,48 @@ public class CarServlet extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		HttpSession sess = req.getSession(false);
-		if (sess != null && sess.getAttribute("user") != null) { // user has logged in
-			List<Car> carList = carService.getAllCars();
-			String carListJSON = new GsonBuilder().create().toJson(carList);
-			PrintWriter pw = resp.getWriter();
-			pw.write(carListJSON);
-		} else {
-			resp.getWriter().write("User not logged in");
-			resp.setStatus(resp.SC_UNAUTHORIZED);
-		}
+		/*
+		 * HttpSession sess = req.getSession(false); if (sess != null &&
+		 * sess.getAttribute("user") != null) { // user has logged in
+		 */
+		List<Car> carList = carService.getAllCars();
+		String carListJSON = new GsonBuilder().create().toJson(carList);
+		PrintWriter pw = resp.getWriter();
+		pw.write(carListJSON);
+		/*
+		 * } else
+		 * 
+		 * {
+		 * 
+		 * resp.getWriter().write("User not logged in");
+		 * resp.setStatus(resp.SC_UNAUTHORIZED); }
+		 */
+
 	}
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		HttpSession sess = req.getSession(false);
-
-		if (sess != null && sess.getAttribute("user") != null) { // user has logged in
-			System.out.println("Logged in");
-			System.out.println(sess.getAttribute("user"));
-			String carJson = req.getReader().readLine();
-			System.out.println(carJson);
-			Car myCar = new GsonBuilder().create().fromJson(carJson, Car.class);
-			try {
-				carService.addCar(myCar);
-				resp.getWriter().write("Success");
-			} catch (CarInsertionException e) {
-				resp.setStatus(resp.SC_INTERNAL_SERVER_ERROR);
-				resp.getWriter().write("Car could not be created");
-			}
-		} else {
-			resp.getWriter().write("User not logged in");
-			resp.setStatus(resp.SC_UNAUTHORIZED);
+		/*
+		 * HttpSession sess = req.getSession(false);
+		 * 
+		 * if (sess != null && sess.getAttribute("user") != null) { // user has logged
+		 * in System.out.println("Logged in");
+		 * System.out.println(sess.getAttribute("user"));
+		 */
+		String carJson = req.getReader().readLine();
+		System.out.println(carJson);
+		Car myCar = new GsonBuilder().create().fromJson(carJson, Car.class);
+		try {
+			carService.addCar(myCar);
+			resp.getWriter().write("Success");
+		} catch (CarInsertionException e) {
+			resp.setStatus(resp.SC_INTERNAL_SERVER_ERROR);
+			resp.getWriter().write("Car could not be created");
 		}
-
+		/*
+		 * } else { resp.getWriter().write("User not logged in");
+		 * resp.setStatus(resp.SC_UNAUTHORIZED); }
+		 */
 	}
 
 	public void setCarService(CarService carService) {

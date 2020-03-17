@@ -1,16 +1,7 @@
 <h2>{{ carLotHeader }}</h2>
+<nav>
+    <a routerLink="/addCar">Add a New Car to the Lot</a>
+</nav>
+<app-search [(ngModel)]="searchFilter" name="searchFilter" ngDefaultControl></app-search>
 
-<table>
-    <tr>
-        <th>Make</th>
-        <th>Model</th>
-        <th>Year</th>
-        <th>Vin</th>
-    </tr>
-    <tr *ngFor="let car of carList">
-        <td>{{ car.make }}</td>
-        <td>{{ car.model }}</td>
-        <td>{{ car.year }}</td>
-        <td>{{ car.vin }}</td>
-    </tr>
-</table>
+<app-car-list [carList]="carList | carPipe:searchFilter"></app-car-list>

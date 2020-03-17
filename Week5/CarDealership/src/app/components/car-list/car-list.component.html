@@ -1,0 +1,14 @@
+<table>
+    <tr>
+        <th>Make</th>
+        <th>Model</th>
+        <th>Year</th>
+        <th>Vin</th>
+    </tr>
+    <tr *ngFor="let car of carList">
+        <td>{{ car.make }}</td>
+        <td>{{ car.model }}</td>
+        <td>{{ car.year }}</td>
+        <td>{{ car.vin }}</td>
+    </tr>
+</table>

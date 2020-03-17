@@ -1,0 +1,13 @@
+<h2>Login Registration</h2>
+
+<label for="username"> New Username: </label>
+<input type="text" [(ngModel)]="username" id="username">
+<br>
+<label for="password">Password: </label>
+<input type="text" [(ngModel)]="password" id="password" />
+<br>
+<button (click)="registerUser()">Register</button>
+<br>
+<nav>
+    <a routerLink="/login">Already have an account?</a>
+</nav>

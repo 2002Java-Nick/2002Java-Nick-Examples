@@ -1,0 +1,19 @@
+<div>
+    <h1>Login</h1>
+</div>
+<div>
+    <input type="text" [formControl]="name" placeholder=" enter username">
+</div>
+<div>
+    <input type="password" [formControl]="password" placeholder="enter password">
+</div>
+<div>
+    <input type="submit" value="Login">
+</div>
+
+<!-- we need a button to route to the register and vice versa. - calvin -->
+<!-- Register new user -->
+<br>
+<nav>
+    <a routerLink="/register">Don't have an account?</a>
+</nav>
