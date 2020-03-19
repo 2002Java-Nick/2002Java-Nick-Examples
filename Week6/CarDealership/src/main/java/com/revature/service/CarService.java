@@ -10,5 +10,7 @@ public interface CarService {
 	public List<Car> getAllCars();
 	
 	public void addCar(Car car) throws CarInsertionException;
+	
+	public Car getCar(String vin);
 
 }

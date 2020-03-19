@@ -13,5 +13,6 @@
 		<property name="show_sql">true</property>
 
 		<mapping class="com.revature.domain.Car" />
+		<mapping class="com.revature.domain.User"/>
 	</session-factory>
 </hibernate-configuration>

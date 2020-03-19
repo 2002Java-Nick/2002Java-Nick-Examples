@@ -9,7 +9,7 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
-  <servlet>
+ <!--  <servlet>
     <servlet-name>CarServlet</servlet-name>
     <servlet-class>com.revature.servlet.CarServlet</servlet-class>
   </servlet>
@@ -55,5 +55,5 @@
   <filter-mapping>
     <filter-name>CORSFilter</filter-name>
     <url-pattern>/*</url-pattern>
-  </filter-mapping>
+  </filter-mapping> -->
 </web-app>
