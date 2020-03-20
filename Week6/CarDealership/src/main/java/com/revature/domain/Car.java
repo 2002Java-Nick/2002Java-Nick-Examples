@@ -7,6 +7,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 @Entity
 @Table(name="car")
 public class Car {
@@ -26,6 +28,7 @@ public class Car {
 	
 	@ManyToOne
 	@JoinColumn(name="owner")
+	@JsonManagedReference
 	private User owner;
 
 	public Car(String make, String model, int year, String vin, User owner) {

@@ -16,21 +16,24 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.revature.config.AppConfig;
+import com.revature.config.DispatcherConfig;
 import com.revature.dao.CarDAOHibernate;
 import com.revature.domain.Car;
 import com.revature.domain.User;
 import com.revature.util.SessionFactoryUtil;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = {AppConfig.class})
+@ContextConfiguration(classes = {AppConfig.class, CarDAOHibernate.class})
 public class SpringCarDAOHibernateTest {
 	
 	@InjectMocks
-	private CarDAOHibernate carDao = new CarDAOHibernate();
+	@Autowired
+	private CarDAOHibernate carDAOHibernate;
 	
 	@Mock
 	private SessionFactory sf;
@@ -72,9 +75,10 @@ public class SpringCarDAOHibernateTest {
 
 	@Test	
 	public void mockGetCarByVinUnitTest() {
+		System.out.println(sess);
 		when(sess.get(Car.class, "a number 1")).thenReturn(car);
 		when(sf.openSession()).thenReturn(sess);
-		assertEquals("should return expected Ford F-120", car, carDao.retriveCarByVin(car.getVin()));
+		assertEquals("should return expected Ford F-120", car, carDAOHibernate.retriveCarByVin(car.getVin()));
 		
 	}
 

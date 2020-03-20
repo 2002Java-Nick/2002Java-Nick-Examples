@@ -23,12 +23,12 @@ public class CarServiceImpl implements CarService {
 		carDao.insertCar(car);
 	}
 	
-	@Autowired
+	//@Autowired
 	public CarServiceImpl(CarDAO carDao) {
 		this.carDao = carDao;
 	}
 	
-	//@Autowired
+	@Autowired
 	public void setCarDao(CarDAO carDao) {
 		this.carDao = carDao;
 	}

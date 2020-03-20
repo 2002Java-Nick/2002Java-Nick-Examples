@@ -23,7 +23,9 @@ public class CarController {
 	@RequestMapping(path = "/car/{vin}",  method = RequestMethod.GET)
 	@ResponseBody
 	public Car getCar(@PathVariable String vin) {
-		return carService.getCar(vin);
+		Car car = carService.getCar(vin);
+		System.out.println(car);
+		return car;
 	}
 	
 }

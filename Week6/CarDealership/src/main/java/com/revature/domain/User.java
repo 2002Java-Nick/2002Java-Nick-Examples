@@ -3,11 +3,16 @@ package com.revature.domain;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
 @Table(name="usr")
@@ -20,8 +25,18 @@ public class User {
 	@Column(name="password")
 	private String password;
 	
-	@OneToMany(mappedBy = "owner")
-	List<Car> carList = new ArrayList<Car>();
+	
+	@OneToMany(mappedBy = "owner", fetch = FetchType.EAGER, cascade = CascadeType.ALL, targetEntity = Car.class)
+	@JsonBackReference
+	private List<Car> carList = new ArrayList<Car>();
+	
+	public List<Car> getCarList() {
+		return carList;
+	}
+
+	public void setCarList(List<Car> carList) {
+		this.carList = carList;
+	}
 
 	public String getUsername() {
 		return username;

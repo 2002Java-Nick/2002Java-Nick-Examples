@@ -20,11 +20,11 @@ import com.revature.util.SessionFactoryUtil;
 @Component
 public class CarDAOHibernate implements CarDAO {
 	
-	private static SessionFactory sf;
+	private SessionFactory sf;
 	
 	@Autowired
-	public static void setSf(SessionFactory sf) {
-		CarDAOHibernate.sf = sf;
+	public void setSf(SessionFactory sf) {
+		this.sf = sf;
 	}
 
 	public List<Car> retrieveAllCars() {

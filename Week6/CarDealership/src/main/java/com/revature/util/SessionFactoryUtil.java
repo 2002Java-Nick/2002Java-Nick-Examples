@@ -1,13 +1,14 @@
 package com.revature.util;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.Metadata;
 import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.model.naming.ImplicitNamingStrategyJpaCompliantImpl;
 import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
-import org.hibernate.cfg.Configuration;
-import org.hibernate.service.ServiceRegistry;
 
 public class SessionFactoryUtil {
 	
@@ -16,6 +17,14 @@ public class SessionFactoryUtil {
 	private static SessionFactoryUtil sfu;
 	
 	private static String configFileLocation = "hibernate.cfg.xml";
+	
+	private static final String USERNAME = System.getenv("2002_POSTGRES_USERNAME");
+	
+	private static final String PASSWORD = System.getenv("2002_POSTGRES_PASSWORD");
+	
+	private static final String URL = "jdbc:postgresql://" + System.getenv("2002_POSTGRES_URL") + ":5432/postgres?";
+	
+	private static String schema = "\"car-dealership\"";
 	
 	public static SessionFactoryUtil getSessionFactoryUtil() {
 		if (sfu == null) {
@@ -35,8 +44,21 @@ public class SessionFactoryUtil {
 			 * .build(); sf = configuration.buildSessionFactory(serviceRegistry);
 			 */
 			//Hibernate 5 Set-Up
-			StandardServiceRegistry standardRegistry = new StandardServiceRegistryBuilder().configure(configFileLocation).build();
+			Map<String, String> settings = new HashMap<String, String>();
+			settings.put("hibernate.connection.driver_class", "org.postgresql.Driver");
+			settings.put("hibernate.dialect", "org.hibernate.dialect.PostgreSQLDialect");
+			settings.put("hibernate.default_schema", schema);
+			settings.put("show_sql", "true");
+			settings.put("connection.pool_size", "1");
+			settings.put("hibernate.connection.url", URL);
+			settings.put("hibernate.connection.username", USERNAME);
+			settings.put("hibernate.connection.password", PASSWORD);
+			
+			
+			StandardServiceRegistry standardRegistry = new StandardServiceRegistryBuilder().applySettings(settings).build();
 			Metadata metadata = new MetadataSources(standardRegistry)
+					.addAnnotatedClass(com.revature.domain.Car.class)
+					.addAnnotatedClass(com.revature.domain.User.class)
 					.getMetadataBuilder()
 					.applyImplicitNamingStrategy(ImplicitNamingStrategyJpaCompliantImpl.INSTANCE)
 					.build();
@@ -49,7 +71,7 @@ public class SessionFactoryUtil {
 	}
 
 	public static void setConfigFileLocationToTest() {
-		configFileLocation = "hibernate.cfg.xml";
+		schema = "\"car-dealership-test\"";
 	}
 	
 }
