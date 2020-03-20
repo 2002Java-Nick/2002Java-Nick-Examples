@@ -12,24 +12,25 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 @Entity
-@Table(name="usr")
+@Table(name = "usr")
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "username")
 public class User {
-	
+
 	@Id
-	@Column(name="name")
+	@Column(name = "name")
 	private String username;
-	
-	@Column(name="password")
+
+	@Column(name = "password")
 	private String password;
-	
-	
+
 	@OneToMany(mappedBy = "owner", fetch = FetchType.EAGER, cascade = CascadeType.ALL, targetEntity = Car.class)
-	@JsonBackReference
 	private List<Car> carList = new ArrayList<Car>();
-	
+
 	public List<Car> getCarList() {
 		return carList;
 	}
@@ -99,5 +100,5 @@ public class User {
 	public User() {
 		super();
 	}
-	
+
 }
