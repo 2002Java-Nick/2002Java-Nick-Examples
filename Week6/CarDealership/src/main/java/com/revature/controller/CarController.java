@@ -16,13 +16,17 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.revature.domain.Car;
+import com.revature.domain.User;
 import com.revature.exception.CarInsertionException;
 import com.revature.service.CarService;
+import com.revature.service.UserServiceImpl;
 
 @Controller
 public class CarController {
 	
 	private CarService carService;
+	
+	private UserServiceImpl userService = new UserServiceImpl();
 	
 	@Autowired
 	public void setCarService(CarService carService) {
@@ -53,6 +57,13 @@ public class CarController {
 			return new ResponseEntity<HttpStatus>(HttpStatus.BAD_REQUEST);
 			
 		}
+	}
+	
+	@GetMapping("/user")
+	@ResponseBody
+	public List<User> getAllUsers(){
+		System.out.println("Inside car controller");
+		return userService.retrieveAllUsers();
 	}
 	
 }
