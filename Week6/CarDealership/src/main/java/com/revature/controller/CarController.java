@@ -59,11 +59,4 @@ public class CarController {
 		}
 	}
 	
-	@GetMapping("/user")
-	@ResponseBody
-	public List<User> getAllUsers(){
-		System.out.println("Inside car controller");
-		return userService.retrieveAllUsers();
-	}
-	
 }
