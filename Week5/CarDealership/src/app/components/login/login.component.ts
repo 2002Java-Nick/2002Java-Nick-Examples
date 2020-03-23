@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { LoginServiceService } from '../../Services/login-service.service';
 import { Router } from '@angular/router';
+import { FormControl, FormGroup } from '@angular/forms';
+import { User } from 'src/app/user';
 
 @Component({
   selector: 'app-login',
@@ -8,21 +10,32 @@ import { Router } from '@angular/router';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  private readonly url = `http://localhost:8080/CarDealership/login`;
 
-  userData = {
-    name: '',
-    password: ''
-  };
-  constructor(private router: Router , private userService: LoginServiceService) { }
+  loginForm = new FormGroup({
+    name: new FormControl(''),
+    password: new FormControl('')
+  });
+
+  get name() {
+    return this.loginForm.get('name');
+  }
+
+  get password() {
+    return this.loginForm.get('password');
+  }
+
+  constructor(private router: Router, private userService: LoginServiceService) { }
 
   ngOnInit() {
   }
 
-  loginUser() {
-    this.userService.loginUser(this.userData).subscribe(
-//there should be logic here to change login component to car list component
-      this.router.navigate(['/car-lot'])
+  loginUser(value, valid) {
+    console.log('inside loginUser method');
+    const name = this.loginForm.get('name');
+    const password = this.loginForm.get('password');
+    const user = new User(name.value, password.value);
+    this.userService.loginUser(user).subscribe(
+      (data) => this.router.navigateByUrl('/carLot')
     );
   }
 

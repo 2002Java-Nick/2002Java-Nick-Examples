@@ -1,8 +1,6 @@
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { User } from '../../user';
-import { HttpClient } from '@angular/common/http';
-import { HttpHeaders } from '@angular/common/http';
-
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-register-user',
   templateUrl: './register-user.component.html',
@@ -10,7 +8,7 @@ import { HttpHeaders } from '@angular/common/http';
 })
 
 export class RegisterUserComponent implements OnInit {
-  private readonly url = `http://localhost:8080/CarDealership/user`;
+  private readonly url = `http://localhost:8080/CarDealership/register`;
   username = ``;
   password = ``;
 
@@ -20,13 +18,15 @@ export class RegisterUserComponent implements OnInit {
     })
   };
 
-  constructor(private http: HttpClient) { }
+  constructor(private router: Router, private http: HttpClient) { }
 
   ngOnInit() {
   }
 
   registerUser(): void {
     let user = {username: this.username, password: this.password};
-    this.http.post(this.url, user, this.httpOptions).subscribe();
+    this.http.post(this.url, user, this.httpOptions).subscribe(
+      (data) => this.router.navigateByUrl('/login')
+    );
   }
 }

@@ -1,7 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { User } from '../user';
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class LoginServiceService {
 
   private readonly url = `http://localhost:8080/CarDealership/login`;

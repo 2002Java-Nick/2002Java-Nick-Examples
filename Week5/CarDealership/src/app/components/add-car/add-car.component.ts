@@ -19,8 +19,8 @@ export class AddCarComponent implements OnInit {
     //   year,
     //   vin
     // );
-    this.carService.addCar(newCar as Car)
-      .subscribe();
+    /* this.carService.addCar(newCar as Car)
+      .subscribe(); */
   }
 
   ngOnInit() {

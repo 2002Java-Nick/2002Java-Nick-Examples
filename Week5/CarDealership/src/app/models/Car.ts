@@ -1,8 +1,8 @@
 export class Car {
-    private make: string;
-    private model: string;
-    private year: number;
-    private vin: string;
+    make: string;
+    model: string;
+    year: number;
+    vin: string;
     constructor(make: string, model: string, year: number, vin: string) {
         this.make = make;
         this.model = model;

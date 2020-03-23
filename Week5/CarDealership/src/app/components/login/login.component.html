@@ -1,15 +1,11 @@
 <div>
     <h1>Login</h1>
 </div>
-<div>
-    <input type="text" [formControl]="name" placeholder=" enter username">
-</div>
-<div>
-    <input type="password" [formControl]="password" placeholder="enter password">
-</div>
-<div>
+<form [formGroup]="loginForm" (ngSubmit)="loginUser(myForm)" name="loginForm" #myForm="ngForm">
+    <input type="text" name="name" [formControl]="name" placeholder=" enter username">
+    <input type="password" name="password" [formControl]="password" placeholder="enter password">
     <input type="submit" value="Login">
-</div>
+</form>
 
 <!-- we need a button to route to the register and vice versa. - calvin -->
 <!-- Register new user -->

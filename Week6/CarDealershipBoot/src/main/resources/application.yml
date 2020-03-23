@@ -1,0 +1,12 @@
+spring:
+  application:
+    name: car-dealership
+  datasource:
+    url: jdbc:postgresql://${2002_POSTGRES_URL}:5432/postgres?currentSchema="car-dealership"
+    username:  ${2002_POSTGRES_USERNAME}
+    password: ${2002_POSTGRES_PASSWORD}
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        show-sql: true
