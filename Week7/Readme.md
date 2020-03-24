@@ -1,15 +1,15 @@
 # Week 7 SOA/MSA Topics
 
-- SOAP
+- [SOAP](https://www.w3.org/TR/2000/NOTE-SOAP-20000508/)
   - WSDL
     - definition, types, message, porttype, operation, binding, service, port
-    - Binding styles
+    - [Binding styles](https://www.ibm.com/support/knowledgecenter/SSFTBX_8.5.7/com.ibm.wbpm.wid.integ.doc/access/topics/rwsdlstyle.html)
   - Contract first/contract last
   - XML Namespaces
-  - JAX-WS
-  - JAXB
+  - [JAX-WS](https://docs.oracle.com/javaee/6/tutorial/doc/bnayl.html)
+  - [JAXB](https://www.oracle.com/technical-resources/articles/javase/jaxb.html)
   - SOAP Engine
-    - Apache CXF
+    - [Apache CXF](https://cxf.apache.org/)
   - SOAP envelope
   - SOAP vs. REST
 
