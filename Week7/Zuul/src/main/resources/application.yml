@@ -1,0 +1,10 @@
+spring:
+  application:
+    name: zuul
+server:
+  port: 8080
+zuul:
+  routes:
+    car:
+      url: http://localhost:8081
+ 
