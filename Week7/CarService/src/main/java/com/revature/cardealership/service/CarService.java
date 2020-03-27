@@ -16,4 +16,6 @@ public interface CarService {
 	
 	public void updateCar(Car car);
 	
+	public List<Car> getCarsByOwner(String owner);
+	
 }

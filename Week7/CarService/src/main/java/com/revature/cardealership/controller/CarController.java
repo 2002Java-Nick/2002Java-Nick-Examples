@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.revature.cardealership.domain.Car;
@@ -25,7 +26,10 @@ public class CarController {
 	}
 
 	@GetMapping("/car")
-	public List<Car> getAllCars() {
+	public List<Car> getAllCars(@RequestParam(required = false) String owner) {
+		if (owner != null) {
+			return carService.getCarsByOwner(owner);
+		}
 		return carService.getAllCars();
 	}
 	

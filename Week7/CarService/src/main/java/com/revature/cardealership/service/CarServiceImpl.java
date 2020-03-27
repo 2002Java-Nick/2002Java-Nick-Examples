@@ -54,4 +54,9 @@ public class CarServiceImpl implements CarService {
 		carRepository.save(car);
 	}
 
+	@Override
+	public List<Car> getCarsByOwner(String owner) {
+		return carRepository.findAllByOwnerName(owner);
+	}
+
 }

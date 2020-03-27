@@ -28,6 +28,9 @@ public class Car {
 	@Column
 	private double price;
 	
+	@Column
+	private String ownerName;
+	
 	@Transient
 	private List<Offer> offerList;
 
@@ -71,11 +74,31 @@ public class Car {
 		this.price = price;
 	}
 
+	public String getOwnerName() {
+		return ownerName;
+	}
+
+	public void setOwnerName(String ownerName) {
+		this.ownerName = ownerName;
+	}
+
 	public List<Offer> getOfferList() {
 		return offerList;
 	}
 
 	public void setOfferList(List<Offer> offerList) {
+		this.offerList = offerList;
+	}
+
+	public Car(String vin, String make, String model, String year, double price, String ownerName,
+			List<Offer> offerList) {
+		super();
+		this.vin = vin;
+		this.make = make;
+		this.model = model;
+		this.year = year;
+		this.price = price;
+		this.ownerName = ownerName;
 		this.offerList = offerList;
 	}
 
@@ -85,6 +108,8 @@ public class Car {
 		int result = 1;
 		result = prime * result + ((make == null) ? 0 : make.hashCode());
 		result = prime * result + ((model == null) ? 0 : model.hashCode());
+		result = prime * result + ((offerList == null) ? 0 : offerList.hashCode());
+		result = prime * result + ((ownerName == null) ? 0 : ownerName.hashCode());
 		long temp;
 		temp = Double.doubleToLongBits(price);
 		result = prime * result + (int) (temp ^ (temp >>> 32));
@@ -112,6 +137,16 @@ public class Car {
 				return false;
 		} else if (!model.equals(other.model))
 			return false;
+		if (offerList == null) {
+			if (other.offerList != null)
+				return false;
+		} else if (!offerList.equals(other.offerList))
+			return false;
+		if (ownerName == null) {
+			if (other.ownerName != null)
+				return false;
+		} else if (!ownerName.equals(other.ownerName))
+			return false;
 		if (Double.doubleToLongBits(price) != Double.doubleToLongBits(other.price))
 			return false;
 		if (vin == null) {
@@ -127,23 +162,16 @@ public class Car {
 		return true;
 	}
 
-	public Car(String vin, String make, String model, String year, double price, List<Offer> offerList) {
-		super();
-		this.vin = vin;
-		this.make = make;
-		this.model = model;
-		this.year = year;
-		this.price = price;
-		this.offerList = offerList;
-	}
-
 	public Car() {
 		super();
 	}
 
 	@Override
 	public String toString() {
-		return "Car [vin=" + vin + ", make=" + make + ", model=" + model + ", year=" + year + ", price=" + price + "]";
+		return "Car [vin=" + vin + ", make=" + make + ", model=" + model + ", year=" + year + ", price=" + price
+				+ ", ownerName=" + ownerName + ", offerList=" + offerList + "]";
 	}
+
+
 	
 }

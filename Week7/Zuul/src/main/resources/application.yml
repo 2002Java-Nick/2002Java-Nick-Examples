@@ -3,8 +3,25 @@ spring:
     name: zuul
 server:
   port: 8080
+  
+#Local Routes
+#zuul:
+#  routes:
+#    car:
+#      url: http://localhost:8081
+
+#Full Discovery Routes Through Eureka
 zuul:
   routes:
     car:
-      url: http://localhost:8081
- 
+      path: /car/**
+      service-id: car-service
+      strip-prefix: false
+    user:
+      path: /user/**
+      service-id: user-service
+      strip-prefix: false
+    payments:
+      path: /payment/**
+      service-id: PurchaseMicroservice
+      strip-prefix: false
