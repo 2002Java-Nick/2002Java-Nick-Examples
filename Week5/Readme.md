@@ -96,8 +96,8 @@
   - Directives:
     - Components
       - Templates
-    - Services
-    - Pipes
+  - Services
+  - Pipes
   - Modules
   - Data binding:
     - Event
